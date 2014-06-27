@@ -69,11 +69,14 @@ sci.plot <- function(..., nrow=1, ncol=1, widths=5, heights=5,
                 print(pp, newpage=FALSE)
             }
 
-            grid.text(numbering[[idx]],
-                      hjust=0, vjust=2,
-                      x=unit(0.00 + xadj, "npc"),
-                      y=unit(1.02 + yadj, "npc"),
-                      gp=gpar(fontsize=20))
+            if (length(plots) > 1) {
+                grid.text(numbering[[idx]],
+                          hjust=0, vjust=2,
+                          x=unit(0.00 + xadj, "npc"),
+                          y=unit(1.02 + yadj, "npc"),
+                          gp=gpar(fontsize=20))
+            }
+
             popViewport()
         }
     }
