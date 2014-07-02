@@ -30,7 +30,10 @@ sci.plot <- function(..., nrow=1, ncol=1, widths=5, heights=5,
     stopifnot(length(plots) == (nrow * ncol))
 
     extra.row = ifelse(is.null(title), 0, 1)
-    heights = c(ifelse(is.null(title), NULL, 1), heights)
+
+    if (!is.null(title)) {
+        heights <- c(1, heights)
+    }
 
     plot.new()
     layout <- grid.layout(nrow=nrow + extra.row, ncol=ncol,
